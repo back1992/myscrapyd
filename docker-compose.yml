@@ -1,0 +1,28 @@
+ version: '2'
+ services:
+   scrapyd:
+     build: .
+     ports:
+       - "6800:6800"
+     restart: always
+
+   scrapy:
+     build: .
+     command: bash
+     volumes:
+       - .:/code
+     working_dir: /code
+     restart: always
+
+   db:
+     image: postgres
+   web:
+     build: .
+     command: python manage.py runserver 0.0.0.0:8000
+     volumes:
+       - .:/code
+     ports:
+       - "8087:8000"
+     depends_on:
+       - db
+

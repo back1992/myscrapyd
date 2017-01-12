@@ -1,0 +1,8 @@
+Mezzanine
+psycopg2
+django-tinymce
+django_pandas
+numpy
+quandl
+Cython
+TA-LIB
